@@ -1,0 +1,24 @@
+...
+"dependencies": {
+  "dredd": "^2.2.5",
+  "md5": "^2.1.0",
+  "dotenv": "^2.0.0"
+}
+...
+hookfiles: ./hooks.js
+language: nodejs
+config: ./dredd.yml
+blueprint: marvel.apib
+endpoint: 'https://gateway.marvel.com:443/v1/public/'
+
+'use strict';
+require('dotenv').config();
+var hooks = require('hooks');
+var md5 = require('md5');
+hooks.beforeEach(function (transaction) {
+  var publicKey = process.env.MARVEL_PUBLIC_KEY;
+  var privateKey = process.env.MARVEL_PRIVATE_KEY;
+  var ts = String(new Date().getTime());
+  var hash = md5(ts+privateKey+publicKey);
+  transaction.fullPath = transaction.fullPath + '?ts=' + ts + '&amp;apikey=' + publicKey + '&amp;hash=' + hash ;
+});
