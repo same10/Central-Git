@@ -1,0 +1,15 @@
+Other options
+If you want to use a SaaS to design/host/test your APIs, then a quick search will show that there are dozens of options. Here's a quick roundup of other open-source and free options; not all work that well within a CI context.
+
+Postman: Better known as a desktop app, you can also automate Postman.
+
+Soap UI: Primarily a desktop application, but possible to automate on certain platforms.
+
+Roll your own: Testing an API is a series of HTTP calls with parameters and an expected response, so coding your own and connecting it to a CI is not too complicated.
+
+Testing Code Examples
+Aside from API documentation, I hope you also have a series of tutorials that helps users assemble the API components into something useful. These will frequently contain snippets of code that readers follow. How many times have you tried one that didn't work?
+
+Automatically testing these snippets is a fantastic idea, but it's unfortunately hard to do. This is due to the nature of a code snippet; it's an abstract extraction of an application, so how can you test it with no context?
+
+It can work with certain languages; SQL for example, which are discrete commands that a CI tool can run and test. Or small, simple code snippets that can work in isolation.
